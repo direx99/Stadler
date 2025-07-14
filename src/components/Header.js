@@ -1,4 +1,15 @@
 import React, { useState } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 
 const navLinks = [
   { name: 'Home', href: '#' },
@@ -9,87 +20,70 @@ const navLinks = [
 ];
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const handleDrawerToggle = () => {
+    setDrawerOpen(!drawerOpen);
+  };
+
+  const handleNavClick = () => {
+    setDrawerOpen(false);
+  };
+
+  const drawer = (
+    <List sx={{ width: 240 }}>
+      {navLinks.map(link => (
+        <ListItem key={link.name} disablePadding>
+          <ListItemButton component="a" href={link.href} onClick={handleNavClick}>
+            <ListItemText primary={link.name} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+  );
 
   return (
-    <header style={{
+    <AppBar position="sticky" sx={{
       background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      color: 'white',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      width: '100%',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     }}>
-      <nav style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        maxWidth: 1200,
-        margin: '0 auto',
-        padding: '0.5rem 1rem',
-      }}>
+      <Toolbar sx={{ maxWidth: 1200, width: '100%', mx: 'auto', display: 'flex', justifyContent: 'space-between' }}>
         <div style={{ fontWeight: 700, fontSize: '1.5rem', letterSpacing: 1 }}>Stadler</div>
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setMenuOpen(m => !m)}
-          style={{
-            display: 'none',
-            background: 'none',
-            border: 'none',
-            color: 'white',
-            fontSize: 28,
-            cursor: 'pointer',
-          }}
-          className="header-hamburger"
-        >
-          ☰
-        </button>
-        <ul className="header-nav" style={{
-          display: 'flex',
-          gap: '2rem',
-          listStyle: 'none',
-          margin: 0,
-          padding: 0,
-        }}>
-          {navLinks.map(link => (
-            <li key={link.name}>
-              <a href={link.href} style={{ color: 'white', textDecoration: 'none', fontWeight: 500, fontSize: '1rem' }}>{link.name}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-      {/* Mobile menu */}
-      <style>{`
-        @media (max-width: 768px) {
-          .header-nav {
-            display: ${menuOpen ? 'flex' : 'none'};
-            flex-direction: column;
-            gap: 1.5rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: absolute;
-            top: 60px;
-            left: 0;
-            width: 100vw;
-            padding: 1.5rem 0;
-            z-index: 999;
-            align-items: center;
-          }
-          .header-hamburger {
-            display: block !important;
-          }
-        }
-        @media (max-width: 400px) {
-          nav {
-            padding: 0.5rem 0.3rem !important;
-          }
-          .header-nav {
-            gap: 1rem;
-            padding: 1rem 0;
-          }
-        }
-      `}</style>
-    </header>
+        {isMobile ? (
+          <>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="end"
+              onClick={handleDrawerToggle}
+              sx={{ ml: 1 }}
+            >
+              <MenuIcon fontSize="large" />
+            </IconButton>
+            <Drawer
+              anchor="right"
+              open={drawerOpen}
+              onClose={handleDrawerToggle}
+              ModalProps={{ keepMounted: true }}
+            >
+              {drawer}
+            </Drawer>
+          </>
+        ) : (
+          <nav>
+            <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
+              {navLinks.map(link => (
+                <li key={link.name}>
+                  <a href={link.href} style={{ color: 'white', textDecoration: 'none', fontWeight: 500, fontSize: '1rem' }}>{link.name}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 };
 
