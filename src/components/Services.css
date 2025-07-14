@@ -1,0 +1,211 @@
+.services {
+  background: white;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.service-card {
+  background: #f8fafc;
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.service-content {
+  flex: 1;
+}
+
+.service-content h3 {
+  color: #2d3748;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service-content p {
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.service-price {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.services-cta {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  padding: 60px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-content h3 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.cta-content p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-cta .btn {
+  background: white;
+  color: #667eea;
+  font-weight: 600;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+}
+
+.services-cta .btn:hover {
+  background: #f8fafc;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .service-card {
+    padding: 25px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .service-icon {
+    margin: 0 auto 20px;
+  }
+  
+  .services-cta {
+    padding: 40px 30px;
+  }
+  
+  .cta-content h3 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card {
+    padding: 20px;
+  }
+  
+  .service-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .service-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .services-cta {
+    padding: 30px 20px;
+  }
+  
+  .cta-content h3 {
+    font-size: 1.5rem;
+  }
+  
+  .services-cta .btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+} 
+
+@media (max-width: 400px) {
+  .services-grid {
+    gap: 8px;
+  }
+  .service-card {
+    padding: 10px;
+  }
+  .service-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+  .service-content h3 {
+    font-size: 1rem;
+  }
+  .services-cta {
+    padding: 10px 6px;
+  }
+  .cta-content h3 {
+    font-size: 1.1rem;
+  }
+  .services-cta .btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+.services, .services * {
+  box-sizing: border-box;
+} 
