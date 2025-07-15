@@ -50,7 +50,7 @@ const Header = () => {
       boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     }}>
       <Toolbar sx={{ maxWidth: 1200, width: '100%', mx: 'auto', display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ fontWeight: 700, fontSize: '1.5rem', letterSpacing: 1 }}>Stadler</div>
+        <div style={{ fontWeight: 700, fontSize: '1.5rem', letterSpacing: 1 }}>Stadler Family Resort</div>
         {isMobile ? (
           <>
             <IconButton
