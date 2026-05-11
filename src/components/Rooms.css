@@ -1,0 +1,268 @@
+.rooms {
+  background: #f8fafc;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.room-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.room-image {
+  position: relative;
+  height: 250px;
+}
+
+.room-image .image-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-image .image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+}
+
+.room-rating {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.room-content {
+  padding: 30px;
+}
+
+.room-content h3 {
+  color: #2d3748;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.room-content p {
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.room-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.feature-tag {
+  background: #e2e8f0;
+  color: #4a5568;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.room-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.price .amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #667eea;
+}
+
+.price .period {
+  color: #718096;
+  font-size: 1rem;
+}
+
+.rooms-info {
+  display: flex;
+  justify-content: center;
+}
+
+.info-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  text-align: center;
+}
+
+.info-card h3 {
+  color: #2d3748;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.amenity svg {
+  color: #667eea;
+  font-size: 18px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .room-content {
+    padding: 25px;
+  }
+  
+  .room-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .room-price {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .info-card {
+    padding: 30px 25px;
+  }
+  
+  .info-card h3 {
+    font-size: 1.5rem;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-image {
+    height: 200px;
+  }
+  
+  .room-content {
+    padding: 20px;
+  }
+  
+  .room-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .price .amount {
+    font-size: 1.5rem;
+  }
+  
+  .info-card {
+    padding: 25px 20px;
+  }
+  
+  .info-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .amenities-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .amenity {
+    justify-content: center;
+  }
+} 
+
+@media (max-width: 400px) {
+  .rooms-grid {
+    gap: 10px;
+  }
+  .room-image {
+    height: 120px;
+  }
+  .room-content {
+    padding: 10px;
+  }
+  .room-content h3 {
+    font-size: 1rem;
+  }
+  .price .amount {
+    font-size: 1.1rem;
+  }
+  .info-card {
+    padding: 10px 6px;
+  }
+  .info-card h3 {
+    font-size: 1.1rem;
+  }
+  .amenities-grid {
+    gap: 6px;
+  }
+  .feature-tag {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+.rooms, .rooms * {
+  box-sizing: border-box;
+} 
